@@ -4,6 +4,10 @@
 from bottle import route, run, get, request
 from FirebaseClient import *
 
+@get('/')
+def server_root():
+	return "WELCOME to jitalk"
+
 @get('/imojify')
 def api_imogify():
     sentence = request.query['sentence']
