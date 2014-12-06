@@ -22,9 +22,9 @@ class FirebaseClient(object):
 		roomID = FirebaseClient._instance.post('/', "chatRoom")
 		return str(roomID['name'])
 
-	def postChat(self, roomID, username, line):
+	def postChat(self, roomID, username, text):
 		# roomID expected as a string
-		data = {'username': username, 'line': line}
+		data = {'username': username, 'text': text}
 		return FirebaseClient._instance.post('/'+roomID, data)
 
 
