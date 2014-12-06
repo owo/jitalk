@@ -10,7 +10,6 @@ def stem_tokens(token_list, src_lang):
     if src_lang == 'en':
         ps = PorterStemmer()
         for token in token_list:
-            print token
             stemmed.append(ps.stem(token))
     
     if src_lang == 'ar':
