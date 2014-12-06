@@ -1,21 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import route, run, get, request
+from bottle import route, run, get, request, Bottle
 from FirebaseClient import *
+from imojify import imojify_app
 
-@get('/')
+root = Bottle()
+root.mount('imojify', imojify_app)
+
+@root.get('/')
 def server_root():
 	return "WELCOME to jitalk"
 
-@get('/imojify')
-def api_imogify():
-    sentence = request.query['sentence']
-    src_lang = request.query['src_lang']
-
-    return "Sentence: %s\n<br/>\nSource Language: %s" % (sentence, src_lang)
-
-@get('/firebase')
+@root.get('/firebase')
 def firebase_client():
 	# check the FirebaseClient class 
 
@@ -26,5 +23,4 @@ def firebase_client():
 
 	return None
 
-
-run(host='0.0.0.0', port=8080, debug=True)
+root.run(host='0.0.0.0', port=8080, debug=True)
