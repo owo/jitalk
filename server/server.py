@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import route, run, get, request, Bottle, redirect
+from bottle import route, run, get, request, Bottle, redirect, static_file
 from FirebaseClient import *
 from imojify import imojify_app
 
@@ -12,6 +12,9 @@ root.mount('imojify', imojify_app)
 def server_root():
     return "WELCOME to jitalk"
 
+@root.get('/test/<file_name>')
+def server_test(file_name):
+    return static_file(file_name, root="/Users/mahmoudalismail/Hackathons/Koding/jitalk/server/front-end-files")
 @root.get('/firebase')
 def firebase_client():
     # check the FirebaseClient class 
