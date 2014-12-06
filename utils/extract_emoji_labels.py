@@ -3,6 +3,7 @@
 
 from bs4 import BeautifulSoup
 import urllib2
+import json
 
 
 def extract_emoji():
@@ -32,3 +33,7 @@ def extract_emoji():
 					  'annotations': annotations})
 
 	return emoji
+
+
+if __name__ == '__main__':
+	print json.dumps(extract_emoji())
