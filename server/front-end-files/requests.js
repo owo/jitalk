@@ -12,12 +12,14 @@ SEND MESSAGES TO THE SERVER
 
 // 
 $("send").ajax({
-	url: '/sendMessage',
-    type: 'GET', // or POST
+
+	type: 'GET', // or POST
+    url: '/sendMessage',
+    contentType: "application/json",
     data: {
         "roomID": $("some box").val(),
         "username": $("some box").val(),
-        "message": $("some box").val()
+        "text": $("some box").val()
     },
     success: function (data) {
         console.log("Message sent!")
