@@ -4,7 +4,7 @@
 from bottle import route, run, get, request, Bottle, redirect, static_file
 from FirebaseClient import *
 from imojify import imojify_app
-
+from WitClient import *
 
 root = Bottle()
 root.mount('imojify', imojify_app)
@@ -44,8 +44,15 @@ def chat_room(roomID):
 
 @root.get('/sendMessage')
 def post_message():
-    jsonData = json.load(request.json)
+    #jsonData = json.load(request.json)
     #jsonData.data = {roomID: "", username: "", text: ""}
-
+    wit = WitClient()
+    firebaseInstance = FirebaseClient()
+    
+    response = wit.text_query("How many hours left?")
+    
+    
+    wit.close_connection()
+    return "message has been sent!"
 
 root.run(host='0.0.0.0', port=8080, debug=True)
