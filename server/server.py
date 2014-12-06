@@ -15,6 +15,7 @@ def server_root():
 @root.get('/test/<file_name>')
 def server_test(file_name):
     return static_file(file_name, root="/Users/mahmoudalismail/Hackathons/Koding/jitalk/server/front-end-files")
+
 @root.get('/firebase')
 def firebase_client():
     # check the FirebaseClient class 
