@@ -74,7 +74,7 @@ def post_message():
     texts = []
 
     try:
-        texts = imojify.imojify_input(ranslate.translate_to_english(text))
+        texts = imojify.imojify_input(translate.translate_to_english(text))
     except:
         pass  
 
