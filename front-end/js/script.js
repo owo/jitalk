@@ -45,7 +45,7 @@ function sendChatMsg() {
   $(".submit").css("-webkit-animation", "circle-of-life 0.5s ease-in");
   sendToServer(getAndResetInputField());
 
-  generateDummyData();
+  // generateDummyData();
 }
 
 function displayNewChat(senderName, imgUrls) {
@@ -73,7 +73,8 @@ function sendToServer(string) {
     type: 'GET', // or POST
       url: '/sendMessage',
       contentType: "application/json",
-      data: {
+      dataType: "json",
+      data: { 
           "roomID": roomID,
           "username": thisUser,
           "text": string
