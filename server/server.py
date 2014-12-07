@@ -6,6 +6,7 @@ from FirebaseClient import *
 import json
 import requests
 import imojify
+import translate
 
 
 TEMPLATE_PATH.insert(0, '../front-end/')
@@ -80,7 +81,8 @@ def post_message():
     firebaseInstance = FirebaseClient()
     
     for sentence in texts:
-        firebaseInstance.postChat(roomID, username, sentence)
+        firebaseInstance.postChat(roomID, username,
+                                  translate.translate_to_english(sentence))
 
     return "message has been sent!"
 
