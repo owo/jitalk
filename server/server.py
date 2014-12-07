@@ -6,7 +6,8 @@ from FirebaseClient import *
 from imojify import imojify_app
 from WitClient import *
 
-TEMPLATE_PATH.insert(0, './views')
+
+# TEMPLATE_PATH.insert(0, './views')
 
 root = Bottle()
 root.mount('imojify', imojify_app)
@@ -17,6 +18,7 @@ def server_root():
     # return "WELCOME to jitalk"
     
     return template('index', None)
+
 
 @root.get('/firebase')
 def firebase_client():
@@ -44,14 +46,22 @@ def chat_room(roomID):
     # return page
     return roomID
 
-def handle_wit(object):
+
+def handle_wit(objects):
     # object = {[{"_text":"How many hours left?","confidence":0.62,"entities":
     # {"object":[{"value":"many"},{"value":"hours lef"}],
     # "question":[{"value":"How"}]},"intent":"get_question"}]}
 
+    is_question = False
+    tokens = []
+
+    if objects is not None and len(objects) > 0:
+        for o in objects[0]:
+            if 
     # object['entities'] = {"object":[{"value":"many"},{"value":"hours lef"}]
     
     return "HELLO"
+
 
 @root.get('/sendMessage')
 def post_message():
