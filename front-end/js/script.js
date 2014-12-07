@@ -7,7 +7,6 @@ $( document ).ready(function() {
   $(".submit").bind('oanimationend animationend webkitAnimationEnd', function() { 
     $(".submit").css("-webkit-animation", "");
   });
-
 });
 
 
