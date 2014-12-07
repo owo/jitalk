@@ -5,7 +5,6 @@ from bottle import route, run, get, request, Bottle, redirect, static_file, Simp
 from FirebaseClient import *
 import json
 import requests
-import simplejson
 import imojify
 
 
