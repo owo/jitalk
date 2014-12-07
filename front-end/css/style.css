@@ -2,18 +2,18 @@ body {
   padding-top: 50px;
   background: #f4f4f4;
 }
-.chat-box {
-  padding: 40px 15px;
+.chatbox {
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
   height: 500px;
 
-  border-style: solid;
-  border-width: 2px;
-  border-color: white;
   background-color: white;
-  box-shadow: 0px 5px 5px #d1d1d1;
+  box-shadow: 0px 5px 10px #d1d1d1;
+
+  position: relative;
+
+  overflow-y: scroll; 
 }
 
 .chat-textfield {
@@ -21,24 +21,96 @@ body {
   margin-right: auto;
   margin-top: 100px;
   max-width: 900px;
+  min-height: 63px;
   
   font-size: 40px;
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Patrick Hand', cursive;
 
   border-style: solid;
   border-width: 2px;
   border-color: white;
   background-color: white;
-  box-shadow: 0px 5px 5px #d1d1d1;
-  line-height: 100px;
+  box-shadow: 0px 5px 10px #d1d1d1;
+  position: relative;
+}
+
+.input-field:focus {
+    margin-left: 6px;
+    outline: 0;
 }
 
 .submit {
-  font-size: 40px;
-  width: 100%;
-  height: 100%;
-  border-color: black;
-  border-size: 5px;
-  background-color: #3498db;
+  top: 5px;
+  position: absolute;
+  right:-100px;
+  color: white;
+  box-shadow: 0px 5px 10px #d1d1d1;
+  background-color: #4c67f6;
+  
+  -webkit-transition: all 0.5s;    
+  transition: all 0.5s;
+
+}
+
+.submit:hover {
+  background-color: #617bff;
+
+  -moz-transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+keyframes circle-of-life {
+    100% {transform: rotate(360deg);}
+} 
+
+@-webkit-keyframes circle-of-life {
+    100% {transform: rotate(360deg);}
+} 
+
+.arrow-right {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px; 
+  font-size: 25px;
+  padding-left: 16px;
+  padding-top: 15px;
+}
+
+/* Inside the chat box */
+.sentence {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 60px;
+
+  -webkit-transition: all 0.5s;    
+  transition: all 0.5s;
+}
+
+.first {
+  background-color: #4c67f6;
   color: white;
 }
+
+.first:hover {
+  background-color: #617bff;
+}
+
+.second {
+  text-align: right;
+}
+
+/* List of users chatting */
+.people {
+  position: absolute;
+}
+
+.person {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px; 
+  background-color: red;
+  color: white;
+}
+
