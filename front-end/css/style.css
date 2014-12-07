@@ -1,6 +1,9 @@
 body {
-  padding-top: 50px;
+  padding-top: 5%;
   background: #f4f4f4;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
 }
 .chatbox {
   margin-left: auto;
@@ -23,8 +26,11 @@ body {
   max-width: 900px;
   min-height: 63px;
   
+  padding-top: 2px;
+  padding-right: 2px;
+
   font-size: 40px;
-  font-family: 'Patrick Hand', cursive;
+  /*font-family: 'Patrick Hand', cursive;*/
 
   border-style: solid;
   border-width: 2px;
@@ -95,17 +101,17 @@ keyframes circle-of-life {
   display: none;
 }
 
-.blue {
+.other-user {
   background-color: #4c67f6;
   color: white;
   box-shadow: 0px 5px 10px #d1d1d1;
 }
 
-.blue:hover {
-  background-color: #617bff;
+.other-user:hover {
+  /*background-color: #4961f6;*/
 }
 
-.white {
+.this-user {
   text-align: right;
 }
 
@@ -115,14 +121,46 @@ keyframes circle-of-life {
 }
 
 .person {
+  position: relative;
+  left: -60px;
   border-radius: 50%;
-  width: 55px;
-  height: 55px; 
-  background-color: red;
+  width: 100px;
+  height: 100px; 
   color: white;
+  box-shadow: 0px 10px 10px #d1d1d1;
+
+  text-align: center;
+  padding-top: 39px;
+
+  margin-bottom: 40px;
+
+  -webkit-transition: left 1s linear;    
+  transition: left 1s linear;
+
+  -webkit-transition: box-shadow 0.3s ease-in;    
+  transition: box-shadow 0.3s ease-in;
+}
+
+.person:hover {
+  box-shadow: 0px 0px 0px #d1d1d1;
+}
+
+.this-person {
+  color: black;
+  background-color: white;
+}
+
+.other-person {
+  color: white;
+  background-color: #4c67f6;
 }
 
 .username {
   display: none;
 }
+
+.roomID {
+  display: none;
+}
+
 

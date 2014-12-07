@@ -7,7 +7,7 @@ from imojify import imojify_app
 from WitClient import *
 
 
-# TEMPLATE_PATH.insert(0, './views')
+TEMPLATE_PATH.insert(0, 'views/')
 
 root = Bottle()
 root.mount('imojify', imojify_app)
@@ -15,9 +15,23 @@ root.mount('imojify', imojify_app)
 
 @root.get('/')
 def server_root():
-    # return "WELCOME to jitalk"
     
-    return template('index', None)
+    return template('index', username="Mahmoud")
+
+# serve static files
+@root.route('/static/<filename>')
+def server_static(filename):
+    root = "../front-end/"
+
+    if filename.endswith(".css"):
+        root = root + "css/"
+    elif filename.endswith(".js"):
+        root = root + "js/"
+    else:
+        root = root + "fonts/"
+
+    return static_file(filename, root)
+
 
 
 @root.get('/firebase')

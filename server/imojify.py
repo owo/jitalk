@@ -17,8 +17,9 @@ lutable = emoji_dict.gen_emoji_lookup_table('data/emoji_dump.json')
 imojify_app = Bottle()
 
 
-def imojify_sentence(sent):
+def imojify_sentence(sent, src_lang="en"):
 	imojified = []
+
 	for s in sent:
 		if s in lutable:
 			imojified.append(lutable[s][0]['image'])
@@ -32,14 +33,14 @@ def imojify_sentence(sent):
 	return imojified
 
 
-def imojify_input(line):
+def imojify_input(line, src_lang="en"):
 	line = line.lower()
 	sents = nlp_utils.tokenize(line)
 	imojified = []
 
 	for s in sents:
-		imojified.append(imojify_sentence(s))
-
+		imojified.append(imojify_sentence(nlp_utils.stem_tokens(s, src_lang),
+						 src_lang))
 	return imojified
 
 
