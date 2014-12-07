@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import route, run, get, request, Bottle, redirect, static_file
+from bottle import route, run, get, request, Bottle, redirect, static_file, SimpleTemplate, TEMPLATE_PATH, template
 from FirebaseClient import *
 from imojify import imojify_app
 from WitClient import *
+
+TEMPLATE_PATH.insert(0, './views')
 
 root = Bottle()
 root.mount('imojify', imojify_app)
@@ -12,8 +14,9 @@ root.mount('imojify', imojify_app)
 
 @root.get('/')
 def server_root():
-    return "WELCOME to jitalk"
-
+    # return "WELCOME to jitalk"
+    
+    return template('index', None)
 
 @root.get('/firebase')
 def firebase_client():
@@ -41,6 +44,14 @@ def chat_room(roomID):
     # return page
     return roomID
 
+def handle_wit(object):
+    # object = {[{"_text":"How many hours left?","confidence":0.62,"entities":
+    # {"object":[{"value":"many"},{"value":"hours lef"}],
+    # "question":[{"value":"How"}]},"intent":"get_question"}]}
+
+    # object['entities'] = {"object":[{"value":"many"},{"value":"hours lef"}]
+    
+    return "HELLO"
 
 @root.get('/sendMessage')
 def post_message():
