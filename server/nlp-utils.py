@@ -4,8 +4,17 @@
 from nltk.stem.porter import PorterStemmer
 from nltk.stem.isri import ISRIStemmer
 from nltk.tokenize import word_tokenize
+import nltk.data
+
+
+sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
+
 
 def stem_tokens(token_list, src_lang):
+    """
+    Returns the stem of a given word depending on the source language.
+    """
+
     stemmed = []
 
     if src_lang == 'en':
@@ -22,4 +31,14 @@ def stem_tokens(token_list, src_lang):
 
 
 def tokenize(sent):
-    return word_tokenize(sent)
+    """
+    Tokenizes a string first into sentences, then into tokens.
+    The result is a list of list of tokens.
+    """
+    sentences = sent_detector.tokenize(sent)
+    res = []
+
+    for s in sentences:
+        res.append(word_tokenize(s.strip()))
+
+    return res
