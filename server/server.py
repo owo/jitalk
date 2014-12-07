@@ -69,7 +69,7 @@ def post_message():
     # or this function can't parse
     username = request.query.username
     roomID = request.query.roomID
-    text = unicode(str(request.query.text))
+    text = str(request.query.text).decode('utf-8')
     
     texts = []
 
