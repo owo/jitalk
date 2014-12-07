@@ -98,6 +98,7 @@ keyframes circle-of-life {
 .blue {
   background-color: #4c67f6;
   color: white;
+  box-shadow: 0px 5px 10px #d1d1d1;
 }
 
 .blue:hover {

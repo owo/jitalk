@@ -57,7 +57,6 @@ function displayNewChat(senderName, imgUrls) {
       //$(this).removeClass(".hidden-chat");
       scrollToBottom();
     });
-
   }
 }
 
@@ -66,7 +65,6 @@ function getAndResetInputField() {
   $(".input-field").text("");
   return input;
 }
-
 
 function scrollToBottom() {
   $('.chatbox').scrollTop($(".chatbox")[0].scrollHeight);
