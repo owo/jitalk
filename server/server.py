@@ -13,8 +13,8 @@ root = Bottle()
 
 @root.get('/')
 def server_root():
-    
     return template('index', username="Mahmoud")
+
 
 # serve static files
 @root.route('/static/<filename>')
