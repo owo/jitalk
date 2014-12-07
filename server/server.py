@@ -3,10 +3,13 @@
 
 from bottle import route, run, get, request, Bottle, redirect, static_file, SimpleTemplate, TEMPLATE_PATH, template
 from FirebaseClient import *
+import json
+import requests
+import simplejson
 import imojify
 
 
-#TEMPLATE_PATH.insert(0, 'views/')
+TEMPLATE_PATH.insert(0, '../front-end/')
 
 root = Bottle()
 
@@ -29,7 +32,6 @@ def server_static(filename):
         root = root + "fonts/"
 
     return static_file(filename, root)
-
 
 
 @root.get('/firebase')
@@ -56,21 +58,31 @@ def chat_room(roomID):
     # you can share the room so others can join you
     # embed the roomID into the return page
     # return page
-    return roomID
+    
+    return template('chatclient', roomID=roomID)
 
 
 @root.get('/sendMessage')
 def post_message():
-    #jsonData = json.load(request.json)
-    #jsonData.data = {roomID: "", username: "", text: ""}
-    firebaseInstance = FirebaseClient()
+
+    # this is not sending json for some reason
+    # or this function can't parse
+    username = request.query.username
+    roomID = request.query.roomID
+    text = str(request.query.text)
+    
     texts = []
 
     try:
-        texts = imojify.imojify_input(jsonData.data['text'])
+        texts = imojify.imojify_input(text)
     except:
         pass  
+
+    firebaseInstance = FirebaseClient()
     
+    for sentence in texts:
+        firebaseInstance.postChat(roomID, username, sentence)
+
     return "message has been sent!"
 
 
