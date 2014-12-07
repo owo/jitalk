@@ -3,7 +3,7 @@
 
 from bottle import route, run, get, request, Bottle, redirect, static_file, SimpleTemplate, TEMPLATE_PATH, template
 from FirebaseClient import *
-from imojify import imojify_input
+import imojify
 
 
 #TEMPLATE_PATH.insert(0, 'views/')
@@ -67,7 +67,7 @@ def post_message():
     texts = []
 
     try:
-        texts = imojify_input(jsonData.data['text'])
+        texts = imojify.imojify_input(jsonData.data['text'])
     except:
         pass  
     
