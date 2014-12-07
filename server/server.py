@@ -3,14 +3,12 @@
 
 from bottle import route, run, get, request, Bottle, redirect, static_file, SimpleTemplate, TEMPLATE_PATH, template
 from FirebaseClient import *
-from imojify import imojify_app
-from WitClient import *
+from imojify import imojify_input
 
 
-TEMPLATE_PATH.insert(0, 'views/')
+#TEMPLATE_PATH.insert(0, 'views/')
 
 root = Bottle()
-root.mount('imojify', imojify_app)
 
 
 @root.get('/')
@@ -61,33 +59,19 @@ def chat_room(roomID):
     return roomID
 
 
-def handle_wit(objects):
-    # object = {[{"_text":"How many hours left?","confidence":0.62,"entities":
-    # {"object":[{"value":"many"},{"value":"hours lef"}],
-    # "question":[{"value":"How"}]},"intent":"get_question"}]}
-
-    is_question = False
-    tokens = []
-
-    if objects is not None and len(objects) > 0:
-        for o in objects[0]:
-            if 
-    # object['entities'] = {"object":[{"value":"many"},{"value":"hours lef"}]
-    
-    return "HELLO"
-
-
 @root.get('/sendMessage')
 def post_message():
     #jsonData = json.load(request.json)
     #jsonData.data = {roomID: "", username: "", text: ""}
-    wit = WitClient()
     firebaseInstance = FirebaseClient()
+    texts = []
+
+    try:
+        texts = imojify_input(jsonData.data['text'])
+    except:
+        pass  
     
-    response = wit.text_query("How many hours left?")
-    
-    
-    wit.close_connection()
     return "message has been sent!"
+
 
 root.run(host='0.0.0.0', port=8080, debug=True)

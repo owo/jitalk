@@ -4,7 +4,6 @@
 import re
 import json
 
-from bottle import request, Bottle
 import nlp_utils
 import emoji_dict
 from icons_api import nounproject_query
@@ -16,7 +15,6 @@ re.UNICODE
 punct_re = re.compile("^\W+$")
 lutable = emoji_dict.gen_emoji_lookup_table('data/emoji_dump.json')
 np_keys = None
-imojify_app = Bottle()
 
 
 with open('nounproject.key', 'r') as infile:
@@ -53,10 +51,3 @@ def imojify_input(line, src_lang="en"):
 		imojified.append(imojify_sentence(nlp_utils.stem_tokens(s, src_lang),
 						 src_lang))
 	return imojified
-
-
-@imojify_app.get('/<src_lang>')
-def api_imojify(src_lang='en'):
-    sentence = request.query['sentence']
-
-    return "Sentence: %s\n<br/>\nSource Language: %s" % (sentence, src_lang)
