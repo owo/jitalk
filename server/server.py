@@ -69,20 +69,19 @@ def post_message():
     # or this function can't parse
     username = request.query.username
     roomID = request.query.roomID
-    text = str(request.query.text)
+    text = unicode(str(request.query.text))
     
     texts = []
 
     try:
-        texts = imojify.imojify_input(text)
+        texts = imojify.imojify_input(ranslate.translate_to_english(text))
     except:
         pass  
 
     firebaseInstance = FirebaseClient()
     
     for sentence in texts:
-        firebaseInstance.postChat(roomID, username,
-                                  translate.translate_to_english(sentence))
+        firebaseInstance.postChat(roomID, username, sentence)
 
     return "message has been sent!"
 
