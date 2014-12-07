@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import re
+import json
 
 from bottle import request, Bottle
 import nlp_utils
 import emoji_dict
+from icons_api import nounproject_query
 
 
 re.LOCALE
@@ -13,8 +15,12 @@ re.UNICODE
 
 punct_re = re.compile("^\W+$")
 lutable = emoji_dict.gen_emoji_lookup_table('data/emoji_dump.json')
-
+np_keys = None
 imojify_app = Bottle()
+
+
+with open('nounproject.key', 'r') as infile:
+	np_keys = json.loads(infile.read())
 
 
 def imojify_sentence(sent, src_lang="en"):
@@ -28,7 +34,12 @@ def imojify_sentence(sent, src_lang="en"):
 		elif s == '!':
 			imojified.append(lutable['exclamation'][0]['image'])
 		elif punct_re.match(s) is None:
-			imojified.append('link!')
+			link = nounproject_query(s, np_keys)
+			if link is not None:
+				imojified.append(link)
+			else:
+				# imojified.append('link!')
+				pass
 
 	return imojified
 
