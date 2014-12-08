@@ -20,6 +20,9 @@ We have managed to use the following API:
 3. Firebase API
 4. NLTK
 5. Bottle.py
+6. Bootstrap
+7. Wow.js
+8. Animate.css
 
 ## Licenses
 This project is licensed under MIT License (MIT) for Jitalk, check the LICENSES file. 
