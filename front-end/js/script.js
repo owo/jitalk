@@ -12,8 +12,9 @@ function setupFirebaseHandlers() {
     var data = snapshot.val();
     var username = data.username;
     var images = data.text;
-
-    displayNewChat(username, images);
+    var original = data.original;
+    
+    displayNewChat(username, images, original);
   });
 }
 
@@ -64,7 +65,7 @@ function sendChatMsg() {
   // generateDummyData();
 }
 
-function displayNewChat(senderName, imgUrls) {
+function displayNewChat(senderName, imgUrls, original) {
   var userClass = (thisUser == senderName) ? "this-user" : "other-user";
 
   if (userClass == "other-user" && otherUser == "") {
@@ -84,12 +85,21 @@ function displayNewChat(senderName, imgUrls) {
     sentence.appendChild(emojImg);
     document.getElementById("chatbox").appendChild(sentence);
           
-    $(".hidden-chat").fadeIn(0, function(){
-      //$(this).css("-webkit-animation", "circle-of-life 0.5s ease-in");
-      //$(this).removeClass(".hidden-chat");
+  }
+
+  $(sentence).attr("imgs", $(sentence).html());
+  $(sentence).attr("alt", original);
+
+  $(".hidden-chat").fadeIn(0, function(){    
       scrollToBottom();
     });
-  }
+
+  $(sentence).hover(function(){
+      $(this).html($(this).attr("alt"))
+
+      }, function(){
+      $(this).html($(this).attr("imgs"))
+      })
 }
 
 function sendToServer(string) {

@@ -30,7 +30,7 @@ def server_static(filename):
         root = root + "css/"
     elif filename.endswith(".js"):
         root = root + "js/"
-    elif filename.endswith(".jpg"):
+    elif filename.endswith(".jpg") or filename.endswith(".ico"):
         root = root + "img"
     else:
         root = root + "fonts/"
