@@ -215,3 +215,9 @@ keyframes circle-of-life {
   margin-left: auto;
   margin-right: auto;
 }
+
+.screenshot {
+  margin-left: 40px;
+  width: 400px;
+}
+
