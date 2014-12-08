@@ -1,5 +1,5 @@
 # Jitalk
-Team Hackateers' submission for Koding Hackathon 2014.
+Team [Hackateers'](https://github.com/koding/global.hackathon/blob/master/Teams/Hackateers/ABOUT.md) submission for Koding Hackathon 2014.
 
 Jitalk (emoji+talk) is a real time chat service that allows people
 speaking different languages to communicate in the global language of symbols.
