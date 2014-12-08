@@ -242,12 +242,28 @@ a:active {
     color: inherit; 
 }
 
-.screenshot {
-  margin-left: 40px;
-  width: 400px;
-}
 
 .screenshot {
-  margin-left: 40px;
+  margin-left: 20px;
+  width: 450px;
+}
+
+.gif-landing {
   width: 400px;
+  margin-left: 30px;
+  margin-top: 30px;
+  box-shadow: 0px 6px 29px #2A2727;
+}
+
+.gif-confusion {
+  width: 400px;
+  margin-left: 30px;
+  margin-top: 80px;
+  box-shadow: 0px 6px 29px #2A2727;
+}
+
+.smiley-face {
+  width: 350px;
+  margin-left: 50px;
+  
 }

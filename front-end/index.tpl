@@ -36,12 +36,14 @@
           <p class="lead">Communication with others who don't speak your language. It has never been easier!</p>
         </div>
         <div class="col-md-5">
+          <img class="gif-landing" src="/static/gif_welcome.gif">
         </div>
       </div>
 
 
       <div class="row featurette">
         <div class="col-md-5">
+          <img class="gif-confusion" src="/static/gif_confusion.gif">
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading">It's hard to chat with someone who doesn't know your language.</h2>
@@ -56,12 +58,13 @@
           <p class="lead">They are the same in every langauge. Everyone gets them. And adores them.</p>
         </div>
         <div class="col-md-5">
+          <img class="smiley-face wow swing" src="/static/smiley-face.svg">
         </div>
       </div>
 
       <div class="row featurette">
         <div class="col-md-5">
-          <img class="screenshot wow tada" src="https://s3.amazonaws.com/f.cl.ly/items/44342Y2x350T1Z1b013T/Image%202014-12-07%20at%209.14.05%20PM.png" ></img>
+          <img class="screenshot wow tada" src="/static/share-link.png" ></img>
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading">Jitalk lets you talk to everyone!</h2>
@@ -105,7 +108,7 @@
       <!-- FOOTER -->
       <footer class="blue">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>Built in Doha, QA and Chicago, IL for the Koding Hackathon, 2014</p>
+        <p>Built in Doha, QA and Chicago, IL for the Koding Hackathon, 2014. Smiley face courtesy of Paul F. of the NounProject.</p>
       </footer>
 
     </div><!-- /.container -->
