@@ -14,7 +14,7 @@ Jitalk takes text input from users using their native language and translates th
 ## Screenshots
 ![Koding Hackathon](/images/screenshot_arabic.png?raw=true "Screenshot 1")
 
-![Koding Hackathon](/images/screenshot_arabic.png?raw=true "Screenshot 2")
+![Koding Hackathon](/images/screenshot_spanish.png?raw=true "Screenshot 2")
 
 ![Koding Hackathon](/images/chatbox.gif?raw=true "Chatbox")
 
