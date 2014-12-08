@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/static/favicon.ico">
 
-    <!-- <link rel="favicon" href="/img/favicon.ico" type="image/x-icon" /> -->
+    
     <title>Jitalk - the cool way to talk!</title>
 
     <!-- Bootstrap core CSS -->
