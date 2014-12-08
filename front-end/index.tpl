@@ -31,9 +31,10 @@
       <!-- START THE FEATURETTES -->
 
       <div class="row featurette blue">
-        <div class="col-md-7">
+        <div class="col-md-7 first-banner">
           <h2 class="featurette-heading">Jitalk <span class="subtext">(emoji + talk)<span></h2>
           <p class="lead">Communication with others who don't speak your language. It has never been easier!</p>
+          <span class="fineprint">* requires Chrome or Safari.</span>
         </div>
         <div class="col-md-5">
           <img class="gif-landing" src="/static/gif_welcome.gif">
