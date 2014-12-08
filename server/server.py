@@ -44,7 +44,7 @@ def firebase_client():
 
     firebaseInstance = FirebaseClient()
     
-    # firebaseInstance.postChat("-JcbZ_dIv5THwpYYG6mj", "Mahmoud", "https://d30y9cdsu7xlg0.cloudfront.net/icon_uploads/f9de2428-8489-4e5e-b2c8-2c2bb3da667c.svg?Expires=1418004145&Signature=Er2laI8HftQwIgSYtvquXtT2Kh3AM6hf5T7adCsu4pLYAUFRuQWQYdrYA4N2XfuWQUhIEirUKNtONMyi2VvOXx4OvsLGjR6eZ-oD3NMJPJ4-esrgTsHtXb1MFP85WADw3-V7pMaSsgJYE383lHhRfcDBD~deEHTMLHdUeWV4UjY_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q")
+    # firebaseInstance.postChat("-JcbLOjJBA29goO81X0T", "Mahmoud", "https://d30y9cdsu7xlg0.cloudfront.net/icon_uploads/f9de2428-8489-4e5e-b2c8-2c2bb3da667c.svg?Expires=1418004145&Signature=Er2laI8HftQwIgSYtvquXtT2Kh3AM6hf5T7adCsu4pLYAUFRuQWQYdrYA4N2XfuWQUhIEirUKNtONMyi2VvOXx4OvsLGjR6eZ-oD3NMJPJ4-esrgTsHtXb1MFP85WADw3-V7pMaSsgJYE383lHhRfcDBD~deEHTMLHdUeWV4UjY_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q", "How are you?")
     # roomID = firebaseInstance.createRoom();
 
     return None
@@ -98,7 +98,8 @@ def post_message():
     firebaseInstance = FirebaseClient()
     
     for sentence in texts:
-        firebaseInstance.postChat(roomID, username, sentence)
+        # roomID, username, decoded sentence, original text
+        firebaseInstance.postChat(roomID, username, sentence, text)
 
     return "message has been sent!"
 
