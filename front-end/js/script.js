@@ -20,14 +20,20 @@ function setupFirebaseHandlers() {
 $( document ).ready(function() {
   $(".submit-username").click(function(){
     var givenName = $(".username-textfield").text();
-    if (givenName != null || givenName != "") {
+    if (givenName == null || givenName == "") {
       givenName = "me";
     }
     $(".username").text(givenName);
     $(".sign-up-overlay").css("display", "none");
+
+    thisUser = givenName;
+    var thisPerson = document.createElement("div");
+    thisPerson.className = "person this-person";
+    $(thisPerson).text(givenName);
+    document.getElementById("people").appendChild(thisPerson);
   });
 
-  roomID = $(".roomID").text() || 123456 
+  roomID = $(".roomID").text() || 123456; 
   messagesRef = new Firebase('https://ji-talk.firebaseio.com/'+roomID);
 
   setupFirebaseHandlers();
@@ -53,12 +59,18 @@ $( document ).ready(function() {
 function sendChatMsg() {
   $(".submit").css("-webkit-animation", "circle-of-life 0.5s ease-in");
   sendToServer(getAndResetInputField());
-
-  generateDummyData();
 }
 
 function displayNewChat(senderName, imgUrls) {
   var userClass = (thisUser == senderName) ? "this-user" : "other-user";
+
+  if (userClass == "other-user" && otherUser == "") {
+    otherUser = senderName;
+    var otherPerson = document.createElement("div");
+    otherPerson.className = "person other-person";
+    $(otherPerson).text(senderName);
+    document.getElementById("people").appendChild(otherPerson);
+  }
 
   var sentence = document.createElement("div");
   sentence.className = "sentence hidden-chat " + userClass;
@@ -109,19 +121,3 @@ function scrollToBottom() {
 function scaleImg(img){
   img.style.height = "50px";
 }
-
-function generateDummyData() {
-  //Creating chat for testing
-  otherUser = "afahim"
-  thisUser = "mahmoud"
-
-  var selectOtherUser = Math.random()<.5; 
-  var sender = selectOtherUser ? "afahim" : "mahmoud";
-
-  var imageUrls = ["http://emojipedia.org/wp-content/uploads/2013/07/160x160x78-cat-face-with-wry-smile.png.pagespeed.ic.1ygkM3ku-M.jpg",
-                   "http://emojipedia.org/wp-content/uploads/2014/04/128x128x1f63c-google-android.png.pagespeed.ic.Seerrsa2qB.png", 
-                   "http://emojipedia.org/wp-content/uploads/2014/04/72x72x1f63c-twitter.png.pagespeed.ic.utvqmVWtXn.png"];
-
-  displayNewChat(sender, imageUrls);
-}
-
