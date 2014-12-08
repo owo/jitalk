@@ -7,6 +7,7 @@ import json
 import requests
 import imojify
 import translate
+from random import randrange
 
 
 TEMPLATE_PATH.insert(0, '../front-end/')
@@ -16,7 +17,8 @@ root = Bottle()
 
 @root.get('/')
 def server_root():
-    return template('index', username="Mahmoud")
+
+    return template('index')
 
 
 # serve static files
@@ -28,6 +30,8 @@ def server_static(filename):
         root = root + "css/"
     elif filename.endswith(".js"):
         root = root + "js/"
+    elif filename.endswith(".jpg"):
+        root = root + "img"
     else:
         root = root + "fonts/"
 
@@ -48,9 +52,20 @@ def firebase_client():
 
 @root.get('/createRoom')
 def create_room():
+
     firebaseInstance = FirebaseClient()
     roomID = firebaseInstance.createRoom()
     redirect('/room/'+roomID)
+
+
+@root.get('/joinRandom')
+def join_random_room():
+
+    firebaseInstance = FirebaseClient()
+    roomIDs = firebaseInstance.getRooms().keys()
+    randMax = len(roomIDs)
+    randomRoom = roomIDs[randrange(randMax)]
+    redirect('/room/'+randomRoom)
 
 
 @root.get('/room/<roomID>')
