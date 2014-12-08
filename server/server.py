@@ -85,8 +85,6 @@ def post_message():
     username = request.query.username
     roomID = request.query.roomID
     text = request.query.text
-
-    print "Text type: %s" % (type(text),)
     
     texts = []
 
