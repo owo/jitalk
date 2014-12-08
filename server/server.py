@@ -21,6 +21,10 @@ def server_root():
     return template('index')
 
 
+@root.get('/favicon.ico')
+def get_favicon():
+    return server_static('favicon.ico')
+
 # serve static files
 @root.route('/static/<filename>')
 def server_static(filename):
