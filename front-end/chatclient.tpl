@@ -25,8 +25,12 @@
   <body>
     <div class="username">afahim</div>
     <div class="roomID">{{roomID}}</div>
-    <div class="language">english</div>
 
+    <div class="sign-up-overlay">
+        <div class="username-textfield" contentEditable="true"></div>
+        <div class="submit-username">Write a username above & click here to start!</div>
+    </div>
+    
     <div class="container">
 
       <div class="people">

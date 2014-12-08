@@ -18,6 +18,15 @@ function setupFirebaseHandlers() {
 }
 
 $( document ).ready(function() {
+  $(".submit-username").click(function(){
+    var givenName = $(".username-textfield").text();
+    if (givenName != null || givenName != "") {
+      givenName = "me";
+    }
+    $(".username").text(givenName);
+    $(".sign-up-overlay").css("display", "none");
+  });
+
   roomID = $(".roomID").text() || 123456 
   messagesRef = new Firebase('https://ji-talk.firebaseio.com/'+roomID);
 
