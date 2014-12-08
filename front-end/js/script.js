@@ -10,7 +10,7 @@ function setupFirebaseHandlers() {
 
   messagesRef.limitToLast(10).on('child_added', function (snapshot) {
     var data = snapshot.val();
-    var username = data.name;
+    var username = data.username;
     var images = data.text;
 
     displayNewChat(username, images);
@@ -31,13 +31,13 @@ $( document ).ready(function() {
     thisPerson.className = "person this-person";
     $(thisPerson).text(givenName);
     document.getElementById("people").appendChild(thisPerson);
-  
+    
+    setupFirebaseHandlers();
   });
 
   roomID = $(".roomID").text() || 123456;
   messagesRef = new Firebase('https://ji-talk.firebaseio.com/'+roomID);
 
-  setupFirebaseHandlers();
 
   thisUser = $(".username").text();
 
