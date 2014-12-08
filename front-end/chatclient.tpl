@@ -33,9 +33,8 @@
     
     <div class="container">
 
-      <div class="people">
-        <div class="person other-person">Mahmoud</div>
-        <div class="person this-person">Afnan</div>
+      <div class="people" id="people" >
+      
       </div>
 
       <div class="chatbox" id="chatbox">
